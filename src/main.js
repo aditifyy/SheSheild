@@ -6,9 +6,9 @@ document.querySelector("#app").innerHTML = `
 
     <div class="nav-links">
       <a href="#">Home</a>
-      <a href="#">Navigation</a>
+    <a href="navigation.html">Navigation</a>
       <a href="#">SOS</a>
-      <a href="#">Profile</a>
+     <a href="login.html">Login</a>
     </div>
   </nav>
 
@@ -24,8 +24,9 @@ document.querySelector("#app").innerHTML = `
 
       <div class="card">
         <h2>🗺️ Safe Navigation</h2>
-        <p>Find a safer route to your destination.</p>
-        <button class="btn">Explore</button>
+       <button class="btn" onclick="window.location.href='navigation.html'">
+    Explore
+</button>
       </div>
 
       <div class="card">

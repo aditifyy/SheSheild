@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SheShield - Safe Navigation</title>
+
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <h2 class="logo">SheShield</h2>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="navigation.html">Navigation</a>
+            <a href="#">SOS</a>
+            <a href="#">Profile</a>
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="navigation-container">
+
+        <div class="page-heading">
+
+            <h1>🗺️ Safe Navigation</h1>
+
+            <p>
+                Find your location and plan a safer journey.
+            </p>
+
+        </div>
+
+
+        <div class="navigation-card">
+
+
+            <!-- CURRENT LOCATION -->
+
+            <div class="location-section">
+
+                <div class="section-title">
+                    <span>📍</span>
+
+                    <div>
+                        <h2>Current Location</h2>
+                        <p>Use your current location as your starting point.</p>
+                    </div>
+                </div>
+
+                <button
+                    class="location-btn"
+                    onclick="getLocation()"
+                >
+                    📍 Get My Current Location
+                </button>
+
+                <div id="locationResult" class="location-result">
+                    Your current location will appear here.
+                </div>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <!-- DESTINATION -->
+
+            <div class="destination-section">
+
+                <div class="section-title">
+
+                    <span>🏁</span>
+
+                    <div>
+                        <h2>Where do you want to go?</h2>
+                        <p>Enter the destination you want to reach.</p>
+                    </div>
+
+                </div>
+
+                <input
+                    type="text"
+                    id="destination"
+                    placeholder="e.g. Graphic Era University"
+                >
+
+            </div>
+
+
+            <!-- SAFE ROUTE BUTTON -->
+
+            <button
+                class="safe-route"
+                onclick="findSafeRoute()"
+            >
+                🛡️ Find Safe Route
+            </button>
+
+
+            <!-- RESULT -->
+
+            <div id="routeResult">
+
+                <div class="result-box">
+
+                    <span class="safe">
+                        ✓ Safer Route Available
+                    </span>
+
+                    <h2>🛡️ Route Information</h2>
+
+                    <div class="result-line">
+                        <b>📍 Starting From:</b>
+                        <span id="startResult"></span>
+                    </div>
+
+                    <div class="result-line">
+                        <b>🏁 Going To:</b>
+                        <span id="destinationResult"></span>
+                    </div>
+
+                    <div class="safety-box">
+
+                        <strong>🟢 Safety Level: High</strong>
+
+                        <p>
+                            Prefer well-lit and busy roads while travelling.
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="share-btn"
+                        onclick="shareLocation()"
+                    >
+                        📍 Share My Location
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script type="module" src="/src/navigation.js"></script>
+
+</body>
+
+</html>
