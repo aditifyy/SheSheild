@@ -1,9 +1,6 @@
 #include "Contact.h"
-
 #include <iostream>
-
 using namespace std;
-
 Contact::Contact(
     string name,
     string phone)
@@ -12,17 +9,14 @@ Contact::Contact(
 
     this->phone = phone;
 }
-
 string Contact::getName()
 {
     return name;
 }
-
 string Contact::getPhone()
 {
     return phone;
 }
-
 void ContactManager::addContact(
     string name,
     string phone)
@@ -33,7 +27,6 @@ void ContactManager::addContact(
 
     cout << "\nContact added successfully.\n";
 }
-
 void ContactManager::removeContact(
     string name)
 {
@@ -52,24 +45,18 @@ void ContactManager::removeContact(
             return;
         }
     }
-
     cout << "\nContact not found.\n";
 }
-
 void ContactManager::displayContacts()
 {
-    cout << "\n========== TRUSTED CONTACTS ==========\n";
-
-    if (contacts.empty())
+ cout << "\n TRUSTED CONTACTS \n";
+ if (contacts.empty())
     {
-        cout << "No trusted contacts available.\n";
+    cout << "No trusted contacts available.\n";
 
         return;
     }
-
-    for (int i = 0;
-         i < contacts.size();
-         i++)
+    for (int i = 0; i < contacts.size();i++)
     {
         cout << i + 1
              << ". "
@@ -79,7 +66,6 @@ void ContactManager::displayContacts()
              << endl;
     }
 }
-
 vector<Contact>& ContactManager::getContacts()
 {
     return contacts;
