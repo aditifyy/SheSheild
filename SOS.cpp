@@ -1,59 +1,112 @@
-#include "SOS.h"
-
+#include "SafetyRoute.h"
 #include <iostream>
+#include <queue>
+#include <vector>
+#include <limits>
+#include <algorithm>
 
 using namespace std;
 
-void SOS::triggerSOS(
-    string location)
+SafetyRoute::SafetyRoute(Graph* graph)
 {
-    emergencyQueue.push(
-        location
-    );
-
-    cout << "\n************************************\n";
-    cout << "          SOS ACTIVATED\n";
-    cout << "************************************\n";
-
-    cout << "Emergency location: "
-         << location
-         << endl;
-
-    cout << "SOS request added to emergency queue.\n";
-
-    cout << "************************************\n";
+    this->graph = graph;
 }
 
-void SOS::processSOS()
+// Find the route with the lowest risk.
+// If two routes have the same risk, choose the shorter one.
+void SafetyRoute::findSafestRoute(int source, int destination)
 {
-    if (emergencyQueue.empty())
-    {
-        cout << "\nNo pending SOS alerts.\n";
+    vector<vector<Edge>>& adj = graph->getGraph();
+    vector<string>& names = graph->getLocationNames();
 
+    int n = adj.size();
+    const int INF = numeric_limits<int>::max();
+
+    // Store the risk and distance for each location.
+    vector<pair<int, int>> cost(n, {INF, INF});
+    vector<int> parent(n, -1);
+
+    // The priority queue checks risk first, then distance.
+    priority_queue<
+        pair<pair<int, int>, int>,
+        vector<pair<pair<int, int>, int>>,
+        greater<pair<pair<int, int>, int>>
+    > pq;
+
+    cost[source] = {0, 0};
+    pq.push({{0, 0}, source});
+
+    while (!pq.empty())
+    {
+        auto current = pq.top();
+        pq.pop();
+
+        int currentRisk = current.first.first;
+        int currentDistance = current.first.second;
+        int currentNode = current.second;
+
+        // The destination has been reached.
+        if (currentNode == destination)
+        {
+            break;
+        }
+
+        // Check all locations connected to the current one.
+        for (const Edge& edge : adj[currentNode])
+        {
+            int nextNode = edge.destination;
+            int newRisk = currentRisk + edge.risk;
+            int newDistance = currentDistance + edge.distance;
+
+            pair<int, int> newCost = {newRisk, newDistance};
+
+            // Prefer lower risk, then lower distance.
+            if (newCost < cost[nextNode])
+            {
+                cost[nextNode] = newCost;
+                parent[nextNode] = currentNode;
+
+                pq.push({newCost, nextNode});
+            }
+        }
+    }
+
+    if (cost[destination].first == INF)
+    {
+        cout << "\nNo route found.\n";
         return;
     }
 
-    cout << "\nProcessing SOS alert...\n";
+    // Trace back through the parent locations to build the route.
+    vector<int> route;
+    int current = destination;
 
-    cout << "Emergency at: "
-         << emergencyQueue.front()
-         << endl;
-
-    emergencyQueue.pop();
-
-    cout << "Alert sent to trusted contacts.\n";
-}
-
-void SOS::displayPendingAlerts()
-{
-    if (emergencyQueue.empty())
+    while (current != -1)
     {
-        cout << "\nNo pending SOS alerts.\n";
-
-        return;
+        route.push_back(current);
+        current = parent[current];
     }
 
-    cout << "\nPending SOS alerts: "
-         << emergencyQueue.size()
-         << endl;
+    reverse(route.begin(), route.end());
+
+    cout << "\n--- SheShield Safe Route ---\n";
+    cout << "\nRoute: ";
+
+    for (int i = 0; i < route.size(); i++)
+    {
+        cout << names[route[i]];
+
+        if (i < route.size() - 1)
+        {
+            cout << " -> ";
+        }
+    }
+
+    cout << "\n\nTotal Safety Risk: "
+         << cost[destination].first;
+
+    cout << "\nTotal Distance: "
+         << cost[destination].second << " km";
+
+    cout << "\nPriority: Safety first, distance second.\n";
 }
