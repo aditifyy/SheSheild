@@ -1,4 +1,4 @@
-#ifndef SOS_Hyui
+#ifndef SOS_Hyuio
 #define SOS_H
 
 #include <queue>
