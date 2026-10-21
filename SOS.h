@@ -1,4 +1,4 @@
-#ifndef SOS_H
+#ifndef SOS_Hq
 #define SOS_H
 
 #include <queue>
