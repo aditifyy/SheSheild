@@ -1,24 +1,26 @@
 sos.h
 
+#ifndef SOS_H
+#define SOS_H
 
-#ifndef SAFETYROUTE_H
-#define SAFETYROUTE_H
-
-#include "Graph.h"
+#include <queue>
+#include <string>
 
 using namespace std;
 
-// Finds the safest route between two locations.
-class SafetyRoute
+class SOS
 {
 private:
-    Graph* graph;
+    queue<string> emergencyQueue;
 
 public:
-    // Use the graph to calculate a safe route.
-    SafetyRoute(Graph* graph);
+    void triggerSOS(
+        string location
+    );
 
-    void findSafestRoute(int source, int destination);
+    void processSOS();
+
+    void displayPendingAlerts();
 };
 
 #endif
