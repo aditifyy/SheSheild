@@ -1,88 +1,47 @@
-graph.cpp
+graph.h
 
 
-#include "Graph.h"
-#include <iostream>
+#ifndef GRAPH_H
+#define GRAPH_H
+
+#include <vector>
+#include <string>
 
 using namespace std;
 
-// Create a graph with the given number of locations.
-Graph::Graph(int vertices)
+// Stores information about a road connecting two locations.
+struct Edge
 {
-    this->vertices = vertices;
+    int destination;
+    int distance;
+    int risk;
+};
 
-    adjacencyList.resize(vertices);
-    locationNames.resize(vertices);
-}
-
-// Save the name of a location at its given ID.
-void Graph::addLocation(int id, string name)
+// Manages locations and the roads between them.
+class Graph
 {
-    if (id >= 0 && id < vertices)
-    {
-        locationNames[id] = name;
-    }
-}
+private:
+    int vertices;
 
-// Connect two locations with a road.
-// Each road stores its distance and risk level.
-void Graph::addRoad(int source, int destination, int distance, int risk)
-{
-    Edge road;
+    // Each location has a list of roads connected to it.
+    vector<vector<Edge>> adjacencyList;
 
-    road.destination = destination;
-    road.distance = distance;
-    road.risk = risk;
+    // Stores the name of each location.
+    vector<string> locationNames;
 
-    adjacencyList[source].push_back(road);
+public:
+    Graph(int vertices);
 
-    // Roads can be travelled in both directions.
-    Edge reverseRoad;
+    void addLocation(int id, string name);
 
-    reverseRoad.destination = source;
-    reverseRoad.distance = distance;
-    reverseRoad.risk = risk;
+    void addRoad(int source, int destination, int distance, int risk);
 
-    adjacencyList[destination].push_back(reverseRoad);
-}
+    void displayLocations();
+    void displayGraph();
 
-// Display all available locations and their IDs.
-void Graph::displayLocations()
-{
-    cout << "\n--- Locations ---\n";
+    // Give access to the graph and location names.
+    vector<vector<Edge>>& getGraph();
+    vector<string>& getLocationNames();
+};
 
-    for (int i = 0; i < vertices; i++)
-    {
-        cout << i << " -> " << locationNames[i] << endl;
-    }
-}
-
-// Show the roads connected to each location.
-void Graph::displayGraph()
-{
-    cout << "\n--- Road Network ---\n";
-
-    for (int i = 0; i < vertices; i++)
-    {
-        cout << "\n" << locationNames[i] << ":\n";
-
-        for (const Edge& road : adjacencyList[i])
-        {
-            cout << "   -> " << locationNames[road.destination]
-                 << " | Distance: " << road.distance
-                 << " km | Risk: " << road.risk << "/10\n";
-        }
-    }
-}
-
-// Return the graph's adjacency list.
-vector<vector<Edge>>& Graph::getGraph()
-{
-    return adjacencyList;
-}
-
-// Return the names of all locations.
-vector<string>& Graph::getLocationNames()
-{
-    return locationNames;
-}
+#endif
