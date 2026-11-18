@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SheShield | Dashboard</title>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/frontend/dashboard.html">
+            <span class="brand-mark">🛡️</span>
+            <span>SheShield</span>
+        </a>
+        <div class="header-user">Hi, <b id="who"></b><button class="button-light header-button" onclick="logout()">Logout</button></div>
+    </header>
+
+    <main class="dashboard-wrap">
+        <section class="dashboard-heading">
+            <div class="dashboard-logo">🛡️</div>
+            <p class="eyebrow">YOUR PERSONAL SAFETY SPACE</p>
+            <h1>Welcome to SheShield</h1>
+            <p>Stay aware, plan safer routes and keep the people you trust close.</p>
+        </section>
+
+        <section class="feature-grid" aria-label="SheShield features">
+            <a class="feature-card" href="/frontend/navigation.html">
+                <span class="feature-icon">🧭</span>
+                <h2>Safe Navigation</h2>
+                <p>Check a safer way to reach your destination, not just the quickest one.</p>
+                <span class="card-link">Plan a route →</span>
+            </a>
+            <a class="feature-card" href="/frontend/sos.html">
+                <span class="feature-icon">🚨</span>
+                <h2>Emergency SOS</h2>
+                <p>Get your current location ready to share when you need support.</p>
+                <span class="card-link">Open SOS →</span>
+            </a>
+            <a class="feature-card" href="/frontend/contacts.html">
+                <span class="feature-icon">👥</span>
+                <h2>Trusted Contacts</h2>
+                <p>Keep your important people together in one easy-to-reach place.</p>
+                <span class="card-link">Manage contacts →</span>
+            </a>
+            <a class="feature-card" href="/frontend/location.html">
+                <span class="feature-icon">📍</span>
+                <h2>Live Location</h2>
+                <p>View your GPS position and choose when to share your map link.</p>
+                <span class="card-link">View location →</span>
+            </a>
+        </section>
+
+        <section class="safety-note">
+            <h2>A small safety reminder</h2>
+            <p>Location access is requested only when you use a location feature. You stay in control of when a message is shared. For a real emergency in India, call <b>112</b>.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">SheShield · A safety-focused navigation and emergency assistance project</footer>
+    <script src="/frontend/js/common.js"></script>
+    <script>guard(); header();</script>
+</body>
+</html>
