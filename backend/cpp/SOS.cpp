@@ -19,9 +19,9 @@ void SOS::triggerSOS(
          << location
          << endl;
 
-    cout << "SOS request added to emergency queue.\n";
+    cout << "SOS request is added to emergency queuee.\n";
 
-    cout << "************************************\n";
+    cout << "***********************\n";
 }
 
 void SOS::processSOS()
