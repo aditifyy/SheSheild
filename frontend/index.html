@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SheShield | Login</title>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+</head>
+<body class="auth-page">
+    <main class="auth-card">
+        <div class="brand brand-centered">
+            <span class="brand-mark">🛡️</span>
+            <span>SheShield</span>
+        </div>
+        <p class="auth-tagline">Your safety, your choice, your support.</p>
+
+        <label for="userId">User ID</label>
+        <input id="userId" type="text" placeholder="Enter your user ID" autocomplete="username">
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Enter your password" autocomplete="current-password">
+
+        <button class="full-width" onclick="loginOrSignup('login')">Login</button>
+        <button class="button-light full-width" onclick="loginOrSignup('signup')">Create account</button>
+        <p id="message" class="message" aria-live="polite"></p>
+    </main>
+
+    <script src="/frontend/js/common.js"></script>
+    <script>
+        async function loginOrSignup(action) {
+            const enteredUser = $('userId').value.trim();
+            const password = $('password').value;
+
+            if (!enteredUser || !password) {
+                $('message').textContent = 'Please enter your user ID and password.';
+                return;
+            }
+
+            try {
+                const result = await api(`/api/${action}`, {
+                    user: enteredUser,
+                    password: password
+                });
+
+                $('message').textContent = result.msg || 'Please try again.';
+
+                if (result.ok && action === 'login') {
+                    localStorage.setItem('sheshield_user', enteredUser);
+                    window.location.href = '/frontend/dashboard.html';
+                }
+            } catch (error) {
+                $('message').textContent = 'Could not connect to the SheShield server.';
+            }
+        }
+    </script>
+</body>
+</html>
