@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SheShield | Emergency SOS</title>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/frontend/dashboard.html"><span class="brand-mark">🛡️</span><span>SheShield</span></a>
+        <div class="header-user"><span id="who"></span><button class="button-light header-button" onclick="logout()">Logout</button></div>
+    </header>
+
+    <main class="page-wrap">
+        <a class="back-link" href="/frontend/dashboard.html">← Back to dashboard</a>
+        <section class="page-heading"><p class="eyebrow">HELP IS ONE STEP AWAY</p><h1>Emergency SOS</h1><p>Press the button to fetch your location and prepare an alert for the people you trust.</p></section>
+
+        <section class="sos-card">
+            <button id="sosButton" class="sos-circle" type="button" aria-label="Fetch location and prepare SOS alert">
+                <span class="sos-circle-icon">SOS</span>
+                <span class="sos-circle-label">PRESS FOR HELP</span>
+            </button>
+            <p id="gpsStatus" class="sos-status" aria-live="polite">Your location has not been fetched yet.</p>
+            <div id="locationDetails" class="location-summary" hidden></div>
+            <p id="sosMessage" class="message" aria-live="polite"></p>
+        </section>
+
+        <section class="content-card">
+            <h2>Emergency options</h2>
+            <p class="muted">If you need immediate help, use the emergency call option. You can also look up nearby police stations.</p>
+            <div class="emergency-options">
+                <a class="emergency-option emergency-call" href="tel:112"><span>☎</span><b>Call 112</b><small>India's emergency response number</small></a>
+                <a class="emergency-option" href="https://www.google.com/maps/search/?api=1&query=police+station+near+me" target="_blank" rel="noopener"><span>📍</span><b>Find nearby police stations</b><small>Open nearby results in Google Maps</small></a>
+            </div>
+        </section>
+
+        <section class="content-card">
+            <h2>Share your alert with trusted contacts</h2>
+            <p class="muted">Choose a contact below. Your messaging app will open with the alert and location link ready. Review it and press Send.</p>
+            <div id="shareContacts" class="contact-list"><p class="muted">Your saved contacts will appear here after location is fetched.</p></div>
+        </section>
+
+        <section class="content-card">
+            <div class="section-heading-row"><div><h2>Recent SOS activity</h2><p class="muted">Alerts saved in this local project.</p></div><button class="button-light" onclick="loadSOSQueue()">Refresh</button></div>
+            <div id="sosQueue" class="activity-list"><p class="muted">Loading activity…</p></div>
+        </section>
+
+        <div class="notice">This is a college project prototype. It does not silently send SMS or dispatch police. GPS works after you allow browser location access. In an actual emergency, call 112 directly.</div>
+    </main>
+
+    <script src="/frontend/js/common.js"></script>
+    <script src="/frontend/js/sos.js"></script>
+</body>
+</html>
