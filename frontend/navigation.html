@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SheShield | Safe Navigation</title>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/frontend/dashboard.html"><span class="brand-mark">🛡️</span><span>SheShield</span></a>
+        <div class="header-user"><span id="who"></span><button class="button-light header-button" onclick="logout()">Logout</button></div>
+    </header>
+
+    <main class="page-wrap">
+        <a class="back-link" href="/frontend/dashboard.html">← Back to dashboard</a>
+        <section class="page-heading"><p class="eyebrow">PLAN A SAFER WAY</p><h1>Safe Navigation</h1><p>Compare a lower-risk route with the shortest route using the project demo map.</p></section>
+
+        <section class="content-card">
+            <div class="route-controls">
+                <label>Starting point<select id="source"></select></label>
+                <label>Destination<select id="destination"></select></label>
+                <button id="findRoute">Find routes</button>
+            </div>
+            <svg id="routeMap" class="route-map" viewBox="0 0 780 420" role="img" aria-label="Demo road network"></svg>
+            <div class="map-legend"><span><i class="legend-safe"></i> Safest route</span><span><i class="legend-short"></i> Shortest route</span><span><i class="legend-road"></i> Other roads</span></div>
+            <div id="routeResults" class="route-results"><p class="muted">Choose your starting point and destination to compare routes.</p></div>
+        </section>
+    </main>
+
+    <script src="/frontend/js/common.js"></script>
+    <script src="/frontend/js/navigation.js"></script>
+</body>
+</html>
