@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SheShield | Trusted Contacts</title>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/frontend/dashboard.html"><span class="brand-mark">🛡️</span><span>SheShield</span></a>
+        <div class="header-user"><span id="who"></span><button class="button-light header-button" onclick="logout()">Logout</button></div>
+    </header>
+
+    <main class="page-wrap">
+        <a class="back-link" href="/frontend/dashboard.html">← Back to dashboard</a>
+        <section class="page-heading"><p class="eyebrow">YOUR SUPPORT CIRCLE</p><h1>Trusted Contacts</h1><p>Add people you would like to reach quickly when you need help.</p></section>
+
+        <section class="content-card">
+            <h2>Your saved contacts</h2>
+            <div id="contactList" class="contact-list"><p class="muted">Loading contacts…</p></div>
+        </section>
+
+        <section class="content-card">
+            <h2>Add someone you trust</h2>
+            <form id="contactForm" class="contact-form">
+                <label for="contactName">Name</label>
+                <input id="contactName" type="text" placeholder="e.g. Mom" required>
+                <label for="contactPhone">Phone number</label>
+                <input id="contactPhone" type="tel" placeholder="Enter phone number" required>
+                <button type="submit">Add contact</button>
+            </form>
+            <p id="contactMessage" class="message" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <script src="/frontend/js/common.js"></script>
+    <script src="/frontend/js/contacts.js"></script>
+</body>
+</html>

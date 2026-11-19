@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SheShield | Live Location</title>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="/frontend/dashboard.html"><span class="brand-mark">🛡️</span><span>SheShield</span></a>
+        <div class="header-user"><span id="who"></span><button class="button-light header-button" onclick="logout()">Logout</button></div>
+    </header>
+
+    <main class="page-wrap">
+        <a class="back-link" href="/frontend/dashboard.html">← Back to dashboard</a>
+        <section class="page-heading"><p class="eyebrow">YOU ARE IN CONTROL</p><h1>Live Location</h1><p>Check where you are and choose when you want to share your location.</p></section>
+
+        <section class="content-card">
+            <div class="section-heading-row"><div><h2>Your current position</h2><p class="muted">Allow GPS access to update your location on this page.</p></div><span id="locationStatus" class="pill">Not connected</span></div>
+            <div class="location-actions"><button id="fetchButton">Fetch my location</button><button id="watchButton" class="button-light">Start live updates</button><button id="stopButton" class="button-light" disabled>Stop updates</button></div>
+            <div class="location-metrics">
+                <div class="metric"><span>Latitude</span><b id="latitude">—</b></div>
+                <div class="metric"><span>Longitude</span><b id="longitude">—</b></div>
+                <div class="metric"><span>Accuracy</span><b id="accuracy">—</b></div>
+                <div class="metric"><span>Last updated</span><b id="lastUpdated">—</b></div>
+            </div>
+            <div id="mapPreview" class="map-preview">Your map link will appear here after you fetch your location.</div>
+        </section>
+
+        <section class="content-card">
+            <h2>Share with trusted contacts</h2>
+            <p class="muted">Choose a contact to open your messaging app with your current map link.</p>
+            <div id="locationContacts" class="contact-list"><p class="muted">Loading contacts…</p></div>
+            <p id="shareMessage" class="message" aria-live="polite"></p>
+        </section>
+        <div class="notice">Live updates run only while this page stays open. Press Stop updates when you are finished. Location sharing requires your confirmation in the messaging app.</div>
+    </main>
+
+    <script src="/frontend/js/common.js"></script>
+    <script src="/frontend/js/location.js"></script>
+</body>
+</html>
