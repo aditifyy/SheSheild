@@ -1,6 +1,6 @@
 sos.h
 
-#ifndef SOS_H
+#ifndefSOS_H
 #define SOS_H
 
 #include <queue>
