@@ -15,7 +15,7 @@ private:
 public:
     Auth(string fileName);
 
-    bool signUp();
+    bool signUp()
 
     bool login();
 
