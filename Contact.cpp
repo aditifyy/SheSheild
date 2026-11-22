@@ -11,7 +11,7 @@ Contact::Contact(string name, string phone)
     this->phone = phone;
 }
 
-stringContact::getName()
+string Contact::getName()
 {
     return name;
 }
