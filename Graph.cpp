@@ -74,10 +74,6 @@ void Graph::displayGraph()
 }
 
 // Return the graph's adjacency list.
-vector<vector<Edge>>& Graph::getGraph()
-{
-    return adjacencyList;
-}
 
 // Return the names of all locations.
 vector<string>& Graph::getLocationNames()
