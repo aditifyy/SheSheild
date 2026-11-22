@@ -8,7 +8,7 @@ auth.cpp
 using namespace std;
 
 // Store the name of the file used for user details.
-Auth::Auth(string fileName)
+
 {
     this->fileName = fileName;
 }
