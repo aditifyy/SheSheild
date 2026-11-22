@@ -8,7 +8,7 @@ using namespace std;
 class SafetyRoute
 {
 private:
-    Graph* graph;
+    Graph* graph
 
 public:
     SafetyRoute(Graph* graph);
