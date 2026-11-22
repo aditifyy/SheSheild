@@ -13,7 +13,7 @@ Contact::Contact(string name, string phone)
 
 string Contact::getName()
 {
-    returnname;
+    return name;
 }
 
 string Contact::getPhone()
