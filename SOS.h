@@ -16,7 +16,7 @@ private:
 public:
     void triggerSOS(
         string location
-    );
+    )
 
     void processSOS();
 
