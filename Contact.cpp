@@ -66,7 +66,7 @@ void ContactManager::displayContacts()
              << contacts[i].getPhone()
              << endl;
     }
-
+}
 
 // Give access to the saved contacts list.
 vector<Contact>& ContactManager::getContacts()
