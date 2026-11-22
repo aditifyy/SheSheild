@@ -1,5 +1,5 @@
 
-const user = localStorage.getItem("sheshield_user") || ""
+const user = localStorage.getItem("sheshield_user") || "";
 
 function $(id) {
     return document.getElementById(id);
