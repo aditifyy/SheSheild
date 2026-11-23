@@ -11,7 +11,7 @@ using namespace std;
 class SOS
 {
 private:
-    queue<string> emergencyQueue;
+    queue<string> emergencyQueue
 
 public:
     void triggerSOS(
