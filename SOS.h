@@ -1,4 +1,4 @@
-sos.
+sos.h
 
 #ifndef SOS_H
 #define SOS_H
